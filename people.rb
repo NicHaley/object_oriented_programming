@@ -36,7 +36,7 @@ instructor.teach
 student = Student.new("Christina")
 student.hello
 student.learn
-student.teach
+
 
 #Both the student and instructor instances have access to the Module 'Greeting' by way of inheritance.
 #As such, they are able to use the method 'hello' and provide a greeting with their names
