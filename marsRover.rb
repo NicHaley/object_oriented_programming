@@ -34,25 +34,25 @@ class Robot
 	end
 
 	def move(direc)
-		unless (@yCoord > $yGrid) || (@xCoord > $xGrid) || (@yCoord < 0) || (@xCoord < 0)
-			if direc == "N"
-				@yCoord += 1
-			elsif direc == "E"
-				@xCoord += "1"
-			elsif direc == "S"
-				@yCoord -= 1
-			elsif direc == "W"
-				@xCoord -= 1
-			end
-		else
-			puts "The robot drove off a cliff! :("
+		if direc == "N"
+			@yCoord += 1
+		elsif direc == "E"
+			@xCoord += 1
+		elsif direc == "S"
+			@yCoord -= 1
+		elsif direc == "W"
+			@xCoord -= 1
 		end
 	end
 
 	def read_instructions(drive)
 		drive.each do |command|
 			if command == "M"
-				move(@direction)
+				if (@yCoord <= $yGrid) && (@xCoord <= $xGrid) && (@yCoord >= 0) && (@xCoord >= 0)
+					move(@direction)
+				else
+					puts "The robot isn't on the grid! :("
+				end
 			elsif command == "R"
 				turnRight(@direction)
 			elsif command == "L"
